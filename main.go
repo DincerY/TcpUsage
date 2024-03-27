@@ -34,7 +34,7 @@ func main() {
 		}
 
 		// Okunan veri işlenir.
-		fmt.Println("Alınan veri:", string(buf[:n]))
+		fmt.Println("Server tarafından alınan veri:", string(buf[:n]))
 
 		// Bağlantıya bir yanıt gönderilir.
 		_, err = conn.Write([]byte("Merhaba, Dünya!"))
@@ -51,7 +51,7 @@ func main() {
 func client() {
 	for {
 		// Sunucuya bir bağlantı kurulur.
-		time.Sleep(time.Second * 1)
+		time.Sleep(time.Second * 3)
 		conn, err := net.Dial("tcp", "localhost:8080")
 		if err != nil {
 			fmt.Println(err)
@@ -74,7 +74,7 @@ func client() {
 		}
 
 		// Okunan veri ekrana yazdırılır.
-		fmt.Println("Alınan veri:", string(buf[:n]))
+		fmt.Println("Client tarafından alınan veri:", string(buf[:n]))
 
 		// Bağlantı kapatılır.
 		conn.Close()
